@@ -3,11 +3,7 @@ import pymongo
 import json
 from pprint import pprint
 
-from client import CLIENT
-
-MY_CLIENT = pymongo.MongoClient(CLIENT)
-MYDB = MY_CLIENT["parts_database"]
-PARTS_COLL = MYDB["parts"]
+from client import MYDB, PARTS_COLL
 
 def insert_csv_sheet(csv_sheet):
     data = pd.read_csv(csv_sheet)
