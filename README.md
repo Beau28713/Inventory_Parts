@@ -11,5 +11,7 @@ If part is not there user is then notified.
 ## Requirements
 See also the requirements file  
 Python 3.9+   
-Typer 0.4.1+  
-pandas 1.4.2+  
+pandas==1.4.2  
+pymongo==3.12.0  
+typer==0.4.1  
+ 
