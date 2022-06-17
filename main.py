@@ -15,7 +15,6 @@ from client import PARTS_COLL
 
 app = typer.Typer()
 
-
 @app.command()
 def insert_csv_sheet(csv_sheet) -> None:
     """Insert data from a CSV sheet into the database
