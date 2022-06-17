@@ -1,4 +1,8 @@
-"""Docstring will go here"""
+"""Allow users to load csv file containing data into a MongoDB database.
+Allows users to search by part number, If part is in the database it is 
+retuned else If part is not there user is then notified.
+User can search, delete, modify, and addd new parts and their data
+"""
 
 import json
 
@@ -14,23 +18,27 @@ app = typer.Typer()
 
 @app.command()
 def insert_csv_sheet(csv_sheet) -> None:
-    """_summary_
+    """Insert data from a CSV sheet into the database
 
     Args:
-        csv_sheet (_type_): _description_
+        csv_sheet (_type_): The CSV sheet used for data insertion
     """
+    try:
+        data = pd.read_csv(csv_sheet)
+        data_insert = json.loads(data.to_json(orient="records"))
+        PARTS_COLL.insert_many(data_insert)
 
-    data = pd.read_csv(csv_sheet)
-    data_insert = json.loads(data.to_json(orient="records"))
-    PARTS_COLL.insert_many(data_insert)
+    except FileNotFoundError as error:
+        typer.echo(f"File not in directory\n {error}")
 
 
 @app.command()
 def find_parts(query: str) -> None:
-    """_summary_
+    """Find part by using its part number, if part is not in
+    the database the user is notified.
 
     Args:
-        query (str): _description_
+        query (str): Part number string used in the search
     """
 
     data = list(PARTS_COLL.find({"Part Number": query}))
@@ -104,14 +112,6 @@ def delete_part(delete_quary: str) -> None:
     y = PARTS_COLL.find_one_and_delete({"Part Number": delete_quary})
     print(f"{delete_quary} has been deleted")
     pprint(y)
-
-
-# def main():
-# insert_csv_sheet("Parts_Inventory_List.csv")
-# find_parts({"Part Number": "171-009-203L001"})
-# update_part("171-009-203L001", "Description", "9 Pin D-Sub Femail type")
-# insert_part("8675309", "1A", "3", "For a good time", "Jenny", "Stacy's Mom")
-# delete_part("8675309")
 
 
 if __name__ == "__main__":
