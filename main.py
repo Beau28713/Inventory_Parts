@@ -18,7 +18,7 @@ app = typer.Typer()
 
 @app.command()
 def insert_csv_sheet(csv_sheet) -> None:
-    """Insert data from a CSV file into the database
+    """Insert data from a CSV file into a database
 
     Args:
         csv_sheet (CSV file, required): The CSV file used for data insertion
@@ -42,12 +42,11 @@ def find_part(part_number: str) -> None:
     """
 
     data = list(PARTS_COLL.find({"Part Number": part_number}))
-    if len(data) > 0:
-        for part in data:
-            pprint(part)
+    if data:
+        pprint(data)
 
     else:
-        typer.echo("Part not in system")
+        typer.echo(f"{part_number} not in system")
 
 
 @app.command()
@@ -85,6 +84,7 @@ def insert_part(
                 "Supplier": supplier,
             }
         )
+        typer.echo(f"Part number {part_number} has been added to database.")
 
 
 @app.command()
@@ -118,7 +118,7 @@ def update_part(
 def delete_part(part_number_to_delete: str) -> None:
     """Delete a part from the database using the parts Part Number.
 
-    Args:
+    Args:\n
         part_number_to_delete (str): Part number of the part you want to delete.
     """
 
@@ -131,7 +131,7 @@ def delete_part(part_number_to_delete: str) -> None:
 
 
 @app.command()
-def del_doc_field(part_number: str, delete_field: str)-> None:
+def del_doc_field(part_number: str, delete_field: str) -> None:
     """Delete a field inside a document in the database.
 
     Args:\n
@@ -149,6 +149,23 @@ def del_doc_field(part_number: str, delete_field: str)-> None:
 
     else:
         print("Part not in database.")
+
+
+@app.command()
+def rename_field(update_field: str, new_field: str) -> None:
+    """ "Rename a field inside a Collection document
+
+    Args:\n
+        update_field (str, required): Old field name.If fieled name has a space 
+    you must surround the Field in '' Ex: Bin # -> 'Bin #'\n
+        new_field (str, required): new field name
+    """
+    field_changed = PARTS_COLL.update_many({}, {"$rename": {update_field: new_field}})
+    if field_changed.modified_count > 0:
+        typer.echo(f"{update_field} has been changed")
+
+    else:
+        typer.echo(f"{update_field} not in documents.")
 
 
 if __name__ == "__main__":
