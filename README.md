@@ -1,7 +1,7 @@
 ## Description (still under construction)
 Allow users to load csv file containing data into a MongoDB database.  
 Allows users to search by part number, If part is in the database it is retuned else If part is not there user is then notified.  
-User can search, delete, modify, and addd new parts and their data  
+User can search, delete, modify, and add new parts and their data  
 
 ## How to use
 ### CLI Use
@@ -70,6 +70,7 @@ Options:
   '_id': ObjectId('62ade32d35ee6599b45d8f37')}]
 ```
 ### Gui Use
+Comming Soon
 
 ## Requirements
 See also the requirements file  
