@@ -1,4 +1,4 @@
-## Description (still under construction)
+## Description  
 Allow users to load csv file containing data into a MongoDB database.  
 Allows users to search by part number, If part is in the database it is retuned else If part is not there user is then notified.  
 User can search, delete, modify, and add new parts and their data  
