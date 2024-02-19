@@ -70,12 +70,4 @@ Options:
   '_id': ObjectId('62ade32d35ee6599b45d8f37')}]
 ```
 ### Gui Use
-Comming Soon
-
-## Requirements
-See also the requirements file  
-Python 3.9+   
-pandas==1.4.2  
-pymongo==3.12.0  
-typer==0.4.1  
- 
+Comming Soon  
