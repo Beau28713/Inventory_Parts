@@ -5,7 +5,7 @@ User can search, delete, modify, and add new parts and their data
 
 ## How to use
 ### CLI Use
-```
+```shell
 (parts_inventory) C:\Users\tech1\Code\Python\Inventory_Parts>python main.py --help
 Usage: main.py [OPTIONS] COMMAND [ARGS]...
 
@@ -24,7 +24,7 @@ Commands:
   rename-field      "Rename a field inside a Collection document
   update-part       Update parts in the database.
 ```
-```
+```shell
   (parts_inventory) C:\Users\tech1\Code\Python\Inventory_Parts>python main.py del-doc-field --help
 Usage: main.py del-doc-field [OPTIONS] PART_NUMBER DELETE_FIELD
 
@@ -44,7 +44,7 @@ Arguments:
 Options:
   --help  Show this message and exit.
   ```
-  ```
+  ```shell
   (parts_inventory) C:\Users\tech1\Code\Python\Inventory_Parts>python main.py find-part --help
 Usage: main.py find-part [OPTIONS] PART_NUMBER
 
@@ -59,7 +59,7 @@ Arguments:
 Options:
   --help  Show this message and exit.
 ```
-```
+```shell
 (parts_inventory) C:\Users\tech1\Code\Python\Inventory_Parts>python main.py find-part 8675309
 [{'Bin': '1A',
   'Description': 'None',
