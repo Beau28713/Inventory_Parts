@@ -1,7 +1,17 @@
 ## Description  
-Allow users to load csv file containing data into a MongoDB database.  
-Allows users to search by part number, If part is in the database it is retuned else If part is not there user is then notified.  
-User can search, delete, modify, and add new parts and their data  
+The application enables users to seamlessly load CSV files containing data into a MongoDB database. It offers a comprehensive set of functionalities for managing part numbers within the database.
+
+Loading CSV Data: Users can effortlessly import data from CSV files into MongoDB.
+
+Searching by Part Number: The system facilitates quick searches by part number. If the part is present in the database, its details are returned. Otherwise, users receive a notification indicating that the part is not found.
+
+Search, Delete, Modify, and Add Parts: Users have the flexibility to perform various operations on parts and their associated data:
+
+Search: Users can search for specific parts and retrieve their details.
+Delete: Unwanted parts can be easily removed from the database.
+Modify: Users can update the information associated with existing parts.
+Add New Parts: Users can effortlessly add new parts along with their relevant data into the database.
+This intuitive interface empowers users to efficiently manage their part number data, ensuring easy access, manipulation, and maintenance.
 
 ## How to use
 ### CLI Use
